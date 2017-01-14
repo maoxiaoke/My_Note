@@ -18,3 +18,5 @@
 ### 栈的链表实现 ###
 
 > 第一种实现方法是单链表。在表顶部插入来实现`push`,通过删除表顶端元素实现`pop`,`top`操作只是考查表顶端元素并返回它的值。
+
+![fda ](https://github.com/maoxiaoke/My_Note/blob/master/Algorithm/Pictures/Stack_push.png)
