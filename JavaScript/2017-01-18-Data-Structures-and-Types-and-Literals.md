@@ -1,24 +1,82 @@
 # [Data structures and types][grammar-and-types] #
+
+关于数据类型和数据结构的概念，可以参考[Wiki百科](https://en.wikipedia.org/wiki/Data_type)。
+
 ## Data types ##
 
 > The lastest ECMAScript standard defines **seven(七种)** data types.
 
-#### Six data types that are [primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) ####
+### Six data types that are primitives ###
 
 > A **primitive**(基元) is data that is not an object and has no methods. 
 
-- **Boolean**. `true` and `false`.
-- **null**. A special keyword denoting a null value. And `null` is not the same as Null, NULL ,or any other variant for JavaScript is case-sensitive.
-- **undefined**. A top-level property whose value is undefined.
-- **Number**. 42 or 3.14159.
-- **String**.
-- **Symbol** (new in ECMAScript 2015). A data type whose instances are unique and immutable.
+- `Boolean`. `true` and `false`.
+- `null`. A special keyword denoting a null value. And `null` is not the same as Null, NULL ,or any other variant for JavaScript is case-sensitive.
+- `undefined`. A top-level property whose value is undefined.
+- `Number`. 42 or 3.14159.
+- `String`.
+- `Symbol` (new in ECMAScript 2015). A data type whose instances are unique and immutable.
 
-#### Object ####
+### Object ###
 
 **Objects** and **functions** are the other fundamental elements in the language.
 
 > You can think of objects as **named container for values**, and functions as **procedures that your application can perform**.
+
+严格意义上来说，`Function`也是一种特殊的对象，还有`array`、`Date`、`RegExp`也算是特殊的对象。所以，更为准确的是：
+
+- `Number`
+- `String`
+- `Boolean`
+- `Symbol` : ECMAScript 2015 新增
+- `Object`
+  - `Function`
+  - `Array`
+  - `Date`
+  - `RegEXp`
+- `Null` : 空
+- `Undefined` : 未定义
+
+### 详解 
+
+#### Number -- 数字
+
+根据语言规范，`JavaScript`采用`IEEE 754 标准定义的双精度64位格式`来表示数字，所以`JavaScript`不区分整数值和浮点数值。
+
+小心`NaN`(Not a Number)。
+
+```javascript
+parseInt ("hello", 10); // 函数返回NaN
+NaN + 5；//返回NaN
+```
+
+> 使用内置函数`isNaN()`可以判断一个变量是否为`NaN`。`isNaN(NaN);//true`
+
+`JavaScript`还有两个特殊值：`Infinity`(正无穷) 和 `-Infinity`(负无穷)
+
+> 可以使用内置函数`isFinite()`来判断一个变量是否是一个**有穷数**，如果类型是`Infinity`、`-Infinity`、`NaN`则返回`false`。
+
+#### String -- 字符串
+
+`JavaScript`中的字符串是一串`Unicode`字符序列。`JavaScript`字符串是不可更改的。这意味着字符串一旦被创建，就不能被修改。但是，可以基于对原始字符串的操作来创建新的字符串。
+
+#### 布尔类型
+
+False values -- 假值
+
+- `false`
+- `0`
+- `""` 空字符串
+- `NaN`
+- `null`
+- `undefined`
+
+
+#### 其他类型
+
+`JavaScript`中`null`和`undefined`是不同的，前者表示一个**空值**`non-value`，必须使用`null`关键字才能访问，后者是`undefined`（未定义）类型的对象，**表示一个未初始化的值，也就是还没有被分配的值。**
+
+`JavaScript`允许声明变量但不对其赋值，一个未被赋值的变量就是`undefined`类型。还有一点需要说明的是，`undefined`实际上是一个不允许修改的常量。
 
 ### Data type conversion ###
 
@@ -26,12 +84,16 @@
 
 > In expressions involving numeric and string values with the `+` operator, JavaScript converts numeric values to strings.
 
-	x = "The answer is" + 42; //"The answer is 42"
+```javascript
+x = "The answer is" + 42; //"The answer is 42"
+```
 
 **In statements involving other operators, JavaScript does not convert numeric values to strings.**
 
-	"37" - 7 //30
-	"37" + 7 //377
+```javascript
+"37" - 7 //30
+"37" + 7 //377
+```
 
 Functions [`parseInt()`][parseInt] and [`parseFloat()`][parseFloat] is used for converting strings to numbers.
 
